@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+/*Colors*/
+--bg-primary:#0B1120;
+--bg-secondary:	#111827;
+--text-primary:	#F8FAFC;
+--text-secondary:	#94A3B8;
+--accent-color:	#8B5CF6;
+--accent-hover:	#A78BFA;
+--border-color:	#1E293B;
+--white-color:#FFFFFF;
+
+            
+    /*Font-Family */
+    --font-heading:"Manrope", sans-serif;
+    --font-body:"Inter", sans-serif;
+
+    /*Font Size*/
+  --font-size-xs: 0.75rem;     /* 12px */
+  --font-size-sm: 0.875rem;    /* 14px */
+  --font-size-base: 1rem;      /* 16px */
+  --font-size-md: 1.125rem;    /* 18px */
+  --font-size-lg: 1.5rem;      /* 24px */
+  --font-size-xl: 2rem;        /* 32px */
+  --font-size-2xl: 3rem;       /* 48px */
+
+
+
+    /* font weight*/
+    --font-weight-normal:400;
+    --font-weight-medium:500;
+    --font-weight-semibold:600;
+    --font-weight-bold:700;
+
+    /*Border radius*/
+    --border-radius-s:4px;
+    --border-radius-m:30px;
+    --boder-radius-circle:50%;
+    
+        /* Line Heights */
+    --line-height-body:1.6;
+    --line-height-heading:1.2;
+
+    /*site max width */
+    --site-max-width:1200px
+}
+
+/*Styling for the whole site*/
+ul{
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+}
+button{
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+html{
+    scroll-behavior: smooth;
+}
+.section-content{
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 1200px;
+}
