@@ -78,35 +78,53 @@ const observer = new IntersectionObserver((entries) => {
 
 observer.observe(aboutSection);
 
-//Form section
 
+//Form section
 const form = document.getElementById("contact-form");
 const submitBtn = document.getElementById("submit-btn");
+const btnText = document.getElementById("btn-text");
 const formStatus = document.getElementById("form-status");
 
 form.addEventListener("submit", async function (event) {
+    // Prevent the browser from redirecting to Formspree
     event.preventDefault();
 
-     const formData = new FormData(form);
+    // Collect all form data
+    const formData = new FormData(form);
 
-     const response = await fetch(form.action, {
-    method: form.method,
-    body: formData,
-    headers: {
-        Accept: "application/json"
+    try {
+        // Disable button while sending
+        submitBtn.disabled = true;
+        btnText.textContent = "Sending...";
+
+        // Clear any previous status message
+        formStatus.textContent = "";
+
+        // Send form data to Formspree
+        const response = await fetch(form.action, {
+            method: form.method,
+            body: formData,
+            headers: {
+                Accept: "application/json"
+            }
+        });
+
+        if (response.ok) {
+            formStatus.textContent = "Thank you! Your message has been sent. I'll get back to you soon.";
+            formStatus.className = "form-status success";
+            form.reset();
+        } else {
+            formStatus.textContent = " Something went wrong. Please try again.";
+            formStatus.className = "form-status error";
+        }
+
+    } catch (error) {
+        console.error(error);
+        formStatus.textContent = "Network error. Please check your connection and try again.";
+        formStatus.className = "form-status error";
+    } finally {
+        // Restore button whether successful or not
+        submitBtn.disabled = false;
+        btnText.textContent = "Send Message";
     }
-});
-
-if (response.ok) {
-
-    formStatus.textContent = "✅ Message sent successfully! I'll get back to you soon.";
-
-    form.reset();
-} else {
-    formStatus.textContent =
-    "❌ Something went wrong. Please try again.";
-
-
-}
-
-});
+})

@@ -846,6 +846,30 @@ header .navbar{
     transform: translateY(-2px);
 }
 
+/* Form response styling */
+#form-status {
+    margin-top: 1rem;
+    padding: 0.85rem 1rem;
+    border-radius: var(--border-radius-s);
+    font-size: var(--font-size-sm);
+    font-family: var(--body-font);
+    line-height: 1.6;
+    display: none;
+}
+
+#form-status.success {
+    display: block;
+    background-color: rgba(139, 92, 246, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    color: var(--accent-hover);
+}
+
+#form-status.error {
+    display: block;
+    background-color: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #f87171;
+}
 
 
 
