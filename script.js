@@ -77,3 +77,36 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 
 observer.observe(aboutSection);
+
+//Form section
+
+const form = document.getElementById("contact-form");
+const submitBtn = document.getElementById("submit-btn");
+const formStatus = document.getElementById("form-status");
+
+form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+     const formData = new FormData(form);
+
+     const response = await fetch(form.action, {
+    method: form.method,
+    body: formData,
+    headers: {
+        Accept: "application/json"
+    }
+});
+
+if (response.ok) {
+
+    formStatus.textContent = "✅ Message sent successfully! I'll get back to you soon.";
+
+    form.reset();
+} else {
+    formStatus.textContent =
+    "❌ Something went wrong. Please try again.";
+
+
+}
+
+});
