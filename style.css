@@ -1123,7 +1123,7 @@ header .navbar{
     }
 }
 
-/* ── Mobile (≤768px) ── */
+
 @media screen and (max-width: 768px) {
 
     /* Hero */
@@ -1270,7 +1270,7 @@ header .navbar{
     .contact-links {
         flex-wrap: wrap;
     }
-
+  
     /* Footer bottom stacks */
     .footer-bottom {
         gap: 0.25rem;
