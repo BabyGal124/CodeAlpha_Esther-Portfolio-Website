@@ -79,6 +79,19 @@ const observer = new IntersectionObserver((entries) => {
 observer.observe(aboutSection);
 
 
+// Mobile nav toggle
+const menuOpenBtn = document.getElementById('menu-open-button');
+const menuCloseBtn = document.getElementById('menu-close-button');
+const navMenu = document.getElementById('nav-menu');
+
+menuOpenBtn.addEventListener('click', () => navMenu.classList.add('open'));
+menuCloseBtn.addEventListener('click', () => navMenu.classList.remove('open'));
+
+// Close menu when a nav link is clicked
+navMenu.querySelectorAll('.nav-link, .nav-button').forEach(link => {
+    link.addEventListener('click', () => navMenu.classList.remove('open'));
+});
+
 // Scroll spy — active nav link
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-link');
@@ -147,3 +160,4 @@ form.addEventListener("submit", async function (event) {
         btnText.textContent = "Send Message";
     }
 })
+

@@ -173,12 +173,38 @@ header .navbar{
     background-color: var(--accent-hover);
     transform: translateY(-2px);
 }
+
+#menu-open-button,
+#menu-close-button {
+    display: none;
+}
 .nav-link.active{
     color: var(--accent-color);
 }
 
 .nav-link.active::after{
     width: 100%;
+}
+
+/*Hamburger & Close Button Styling */
+#menu-open-button{
+    display: none;
+    font-size: 1.6rem;
+    color: var(--dark-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+}
+#menu-close-button{
+    display:none;
+    font-size: 1.6rem;
+    color: var(--dark-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+    align-self: flex-end;
+
 }
 
 /*Hero Section Styling */
@@ -952,7 +978,110 @@ header .navbar{
 
 
 /* ── Media Queries ── */
-@media (max-width: 768px) {
+@media screen and (max-width: 900px){
+    #menu-open-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: var(--text-primary);
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.4rem;
+    }
+
+    .navbar .nav-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 30vw;
+        height: 100vh;
+        background-color: var(--bg-secondary);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        z-index: 999;
+        border-left: 1px solid var(--border-color);
+        padding: 2rem;
+        box-shadow: -8px 0 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .navbar .nav-menu.open {
+        display: flex;
+    }
+
+    #menu-close-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 1.25rem;
+        right: 1.25rem;
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.4rem;
+        transition: color 0.2s ease;
+    }
+
+    #menu-close-button:hover {
+        color: var(--accent-color);
+    }
+
+    .nav-menu .nav-list {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+        width: 100%;
+    }
+
+    .nav-menu .nav-list .nav-item {
+        width: 100%;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-menu .nav-list .nav-item:last-child {
+        border-bottom: none;
+    }
+
+    .nav-menu .nav-list .nav-link {
+        display: inline-block;
+        padding: 0.75rem 0;
+        font-size: var(--font-size-md);
+        font-weight: var(--font-weight-medium);
+        color: var(--text-secondary);
+        width: auto;
+        transition: color 0.2s ease, padding-left 0.2s ease;
+    }
+
+    /* hide the global underline pseudo-element inside sidebar */
+    .nav-menu .nav-list .nav-link::after {
+        display: none;
+    }
+
+    .nav-menu .nav-list .nav-link:hover,
+    .nav-menu .nav-list .nav-link.active {
+        color: var(--accent-color);
+        padding-left: 0.5rem;
+    }
+
+    .nav-menu .nav-list .nav-item:last-child .nav-link {
+        border-bottom: none;
+    }
+
+    .nav-menu .nav-list .nav-button {
+        margin-top: 1.5rem;
+        width: 100%;
+        text-align: center;
+        padding: 0.85rem;
+    }
+}
+@media screen and  (max-width: 768px) {
     /* Hero */
     .hero-container {
         flex-direction: column-reverse;
