@@ -708,6 +708,9 @@ header .navbar{
 .skill-card img[alt="GitHub"] {
     filter: invert(1);
 }
+.skill-card img[alt="Vercel"] {
+    filter: invert(1);
+}
 
 .skill-card h4 {
     font-family: var(--body-font);
@@ -1235,12 +1238,10 @@ header .navbar{
 /* ── Small phones (≤480px) ── */
 @media screen and (max-width: 480px) {
 
-    /* Navbar sidebar goes wider on tiny screens */
     .navbar .nav-menu {
         width: 75vw;
     }
 
-    /* Hero title too large on tiny screens */
     .hero-title {
         font-size: clamp(1.75rem, 7vw, 2.5rem);
     }
@@ -1250,12 +1251,12 @@ header .navbar{
         height: 250px;
     }
 
-    /* About code smaller font */
+  
     .about-code {
         font-size: 0.72rem;
     }
 
-    /* Skill cards even tighter */
+ 
     .skill-card {
         min-width: 75px;
         padding: 1rem;
