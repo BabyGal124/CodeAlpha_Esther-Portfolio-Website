@@ -82,11 +82,53 @@ const observer = new IntersectionObserver((entries) => {
 
 observer.observe(aboutSection);
 
+// Color theme toggle
+const themeToggle = document.getElementById('theme-toggle');
+let savedTheme = null;
+
+try {
+    savedTheme = localStorage.getItem('theme');
+} catch (error) {
+    console.error('Unable to load the saved color theme.', error);
+}
+
+const initialTheme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : 'dark';
+
+function setTheme(theme) {
+    document.documentElement.dataset.theme = theme;
+    themeToggle.setAttribute('aria-pressed', String(theme === 'light'));
+    themeToggle.title = `Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`;
+}
+
+setTheme(initialTheme);
+
+themeToggle.addEventListener('click', () => {
+    const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    setTheme(nextTheme);
+    try {
+        localStorage.setItem('theme', nextTheme);
+    } catch (error) {
+        console.error('Unable to save the selected color theme.', error);
+    }
+});
 
 // Mobile nav toggle
 const menuOpenBtn = document.getElementById('menu-open-button');
 const menuCloseBtn = document.getElementById('menu-close-button');
 const navMenu = document.getElementById('nav-menu');
+const themeToggleItem = themeToggle.closest('.theme-toggle-item');
+const mobileThemeQuery = window.matchMedia('(max-width: 900px)');
+
+function positionThemeToggle() {
+    if (mobileThemeQuery.matches) {
+        navMenu.parentElement.insertBefore(themeToggle, menuOpenBtn);
+    } else {
+        themeToggleItem.appendChild(themeToggle);
+    }
+}
+
+positionThemeToggle();
+mobileThemeQuery.addEventListener('change', positionThemeToggle);
 
 menuOpenBtn.addEventListener('click', () => navMenu.classList.add('open'));
 menuCloseBtn.addEventListener('click', () => navMenu.classList.remove('open'));
@@ -164,4 +206,3 @@ form.addEventListener("submit", async function (event) {
         btnText.textContent = "Send Message";
     }
 })
-

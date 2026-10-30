@@ -10,6 +10,7 @@ A responsive personal portfolio website built with HTML, CSS, and JavaScript to 
 * Projects showcase
 * Contact section
 * Smooth navigation and interactive UI
+* Dark and light themes with a saved preference
 
 ## Technologies Used
 
